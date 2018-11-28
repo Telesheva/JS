@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+</head>
+<body>
+<style>
+    body {
+        display: none;
+        width: 900px;
+        margin: 0;
+    }
+
+    .head {
+        background-image: url("http://papers.co/wallpaper/papers.co-no02-macbook-bokeh-coding-apple-29-wallpaper.jpg");
+        height: 570px;
+        width: 100%;
+        z-index: 0;
+        background-size: cover;
+    }
+
+    .main {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 620px;
+        height: 450px;
+        position: absolute;
+        background-color: #25cf74;
+        z-index: 1;
+        margin-top: 170px;
+        margin-left: 150px;
+        border-radius: 5px 0 5px 0;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar {
+        background-color: #343a40;
+        height: 56px;
+        width: 900px;
+        top: 0;
+        left: 0;
+    }
+
+    .navigation-item {
+        list-style: none;
+        display: inline-block;
+        padding-right: 14px;
+        color: ivory;
+        font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-style: italic;
+        opacity: 0.7;
+    }
+
+    .navigation-item:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .main-item {
+        list-style: none;
+        display: inline-block;
+        padding-right: 14px;
+        color: ivory;
+        font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 18px;
+        font-weight: bold;
+        opacity: 1;
+        font-style: italic;
+    }
+
+    .navigation-item-list {
+        padding: 10px 0 5px 10px;
+        margin: 0;
+    }
+
+    .img {
+        width: 320px;
+        height: 450px;
+        position: relative;
+        z-index: 0;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .links {
+        margin-left: 50px;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text a {
+        text-decoration: underline;
+        cursor: pointer;
+        color: blue;
+    }
+
+    .text p {
+        font-family: "Arial Black";
+        font-weight: bolder;
+        font-style: italic;
+        text-shadow: 2px 1px 2px black;
+        font-size: 30px;
+    }
+
+    .text {
+        margin-left: 12px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+    }
+
+    .social {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+        padding-left: 0;
+        width: 150px;
+    }
+
+    .about {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        font-family: "Courier New";
+        font-weight: bold;
+        margin-top: 170px;
+        width: 700px;
+        height: auto;
+        margin-left: 110px;
+        color: black;
+        font-size: 20px;
+        padding: 14px;
+        text-align: justify;
+    }
+
+    button {
+        background-color: #26d377;
+        border-radius: 7px;
+        color: ivory;
+        width: 115px;
+        height: 42px;
+        cursor: pointer;
+        font-style: italic;
+        font-weight: inherit;
+    }
+
+    .buttons {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0 150px 0 150px;
+    }
+
+    .list, .skills {
+        margin-top: 20px;
+        margin-left: 225px;
+        width: 450px;
+        font-style: oblique;
+        font-weight: bolder;
+        font-size: 16px;
+        padding-bottom: 25px;
+    }
+
+    .personal {
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .education, .experience, .summary, .tools, .program {
+        text-align: center;
+    }
+
+    .nure {
+        background-image: url("https://kh-news.net/media/k2/items/cache/372b94f2cba8e21077a5b381bcf540a1_L.jpg");
+        background-size: cover;
+        border-radius: 5px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        font-family: "Courier New";
+        font-weight: bold;
+        text-shadow: 2px 1px 2px black;
+        width: 600px;
+        height: 500px;
+        margin: 20px 150px 40px 150px;
+        color: black;
+        font-size: 20px;
+        padding: 14px;
+        text-align: justify;
+    }
+
+    .it {
+        border-radius: 5px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        font-family: "Courier New";
+        font-weight: bold;
+        text-shadow: 2px 1px 2px black;
+        width: 600px;
+        height: 280px;
+        margin: 20px 150px 40px 150px;
+        color: black;
+        font-size: 20px;
+        padding: 10px;
+        text-align: justify;
+        background-color: white;
+    }
+
+    .sourceit {
+        width: 400px;
+        height: 150px;
+        margin: 20px 100px 0 100px;
+    }
+
+    .my-list, .skills-list {
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        text-align: center;
+        list-style: none;
+        font-family: "Courier New";
+        font-weight: bold;
+        height: 525px;
+        padding: 0;
+    }
+
+    .skills-list {
+        height: 150px !important;
+    }
+
+    .skills-item {
+        padding: 4px;
+        border: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    .my-list-item {
+        border: 1px solid rgba(0, 0, 0, .125);
+        position: unset;
+        padding: 1px;
+    }
+
+    .my-list-item:hover, .skills-item:hover {
+        cursor: pointer;
+        background-color: #26d377;
+        color: ivory;
+    }
+
+    .color {
+        background-color: #26d377;
+    }
+
+    .program {
+        margin-bottom: 20px;
+    }
+
+    .program img {
+        width: 60px;
+        height: 60px;
+        margin: 30px 30px 30px 60px;
+    }
+
+    .program label {
+        font-family: "Courier New";
+        font-weight: bold;
+        font-style: oblique;
+        display: inline-block;
+        margin-left: -45px;
+    }
+
+    .footer-content {
+        margin: 90px 0 0 10px;
+        font-style: oblique;
+        font-weight: bold;
+    }
+
+    .footer-text {
+        margin: 7px 50px 0 0;
+        color: #343a40;
+        font-style: oblique;
+        font-weight: bold;
+        font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    #footer {
+        height: 135px;
+        width: 900px;
+        background-color: #26d377;
+        color: ivory;
+        font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        font-style: oblique;
+        margin-top: 20px;
+    }
+
+    hr {
+        height: 1.5px;
+        background-color: #26d377;
+    }
+
+    p {
+        font-style: oblique;
+    }
+
+    h2 {
+        font-family: 'Satisfy', cursive;
+        color: #26d377;
+        text-shadow: 2px 1px 2px aqua;
+    }
+
+    @media print {
+        .main {
+            background-color: black;
+            color: white;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        .main p {
+            color: white;
+        }
+
+        .main img {
+            background-color: white;
+        }
+
+        .triangle1, .triangle2 {
+            display: none;
+        }
+
+        img, .head, .nure {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        hr {
+            background-color: black;
+        }
+
+        p, h2 {
+            color: black;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+        }
+
+        #footer {
+            background-color: black;
+        }
+
+        .footer-text img {
+            background-color: white;
+        }
+
+        .footer-text p {
+            color: white;
+        }
+
+        .nure, .main, .it {
+            border: 1px solid black;
+        }
+
+        .navbar {
+            background-color: black;
+            width: 992px;
+        }
+
+        .my-list-item p {
+            color: black;
+        }
+
+        .my-list-item a {
+            color: black;
+        }
+
+        .footer-text a {
+            color: white;
+        }
+
+    }
+
+    .my-dropdown {
+        padding: 9px 7px 0 10px;
+        position: relative;
+    }
+
+    #drop-link {
+        color: white;
+        display: flex;
+    }
+
+    .mydropdown-menu {
+        display: none;
+        position: absolute;
+        padding: 12px;
+        width: 170px;
+        height: 210px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color: ghostwhite;
+        list-style: none;
+        margin-left: -30px;
+    }
+
+    .mydropdown-menu a {
+        color: black;
+        font-family: "Courier New";
+        font-weight: bold;
+    }
+
+    .drop-li {
+        padding: 7px;
+    }
+
+    .mydropdown-menu li:hover {
+        background-color: gainsboro;
+    }
+
+    .mydropdown-menu a, #drop-link:hover {
+        text-decoration: none;
+    }
+
+    .triangle-down {
+        border-top: 7px solid white;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        margin: 7px 0 0 4px;
+        transition: .25s;
+    }
+
+    .triangle-up {
+        border-bottom: 7px solid white;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        margin: 0 0 7px 4px;
+        transition: .25s;
+    }
+
+    .margin {
+        padding: 5px;
+        margin: 2px 5px 0 45px;
+        transition: .4s;
+    }
+
+    .unshow {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    #fancyBox-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 900px;
+        z-index: 101;
+    }
+
+    .fancy-box-overlay {
+        background-color: rgb(119, 119, 119);
+        opacity: 0.7;
+        cursor: pointer;
+        height: 3915px;
+        display: block;
+    }
+
+    .show-fancy-box {
+        display: block;
+        width: 530px;
+        height: 650px;
+        top: 594px;
+        left: 78px;
+    }
+
+    #fancy-outer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+    }
+
+    #fancy-content {
+        padding: 0;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 102;
+        border: 10px white solid;
+        width: 390px;
+        height: 550px;
+
+    }
+
+    .sizing {
+        width: 100%;
+        height: 100%;
+    }
+
+    #fancy-wrapper {
+        width: 375px;
+        height: 550px;
+        position: fixed;
+        z-index: 102;
+        margin-top: -550px;
+        margin-left: 180px;
+    }
+
+    #my-photo {
+        position: relative;
+        z-index: 0;
+    }
+
+    .close {
+        background-image: url("images/delete.png");
+        position: absolute;
+        z-index: 102;
+        width: 32px;
+        height: 32px;
+        top: -23px;
+        right: -23px;
+        opacity: 1;
+    }
+
+    .mini-gallery {
+        margin-top: 25px;
+        background-color: black;
+        display: flex;
+        height: 200px;
+        width: 570px;
+        margin-left: -95px;
+    }
+
+    .gallery-block {
+        width: 25%;
+    }
+
+    .gallery-block img {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0.6;
+    }
+
+    .arrow, .small-arrow {
+        position: absolute;
+        z-index: 103;
+        opacity: .8;
+    }
+
+    #small-arrow-right {
+        right: -125px;
+        top: 620px;
+    }
+
+    #small-arrow-left {
+        left: -120px;
+        top: 620px;
+    }
+
+    #small-arrow-right2 {
+        right: -185px;
+        top: 55px;
+    }
+
+    #small-arrow-left2 {
+        right: 440px;
+        top: 55px;
+    }
+
+    .arrow, .small-arrow, .gallery-block img:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    #arrow-left {
+        margin-top: 65%;
+        left: 0;
+    }
+
+    #arrow-right {
+        margin-top: 65%;
+        right: 0;
+    }
+
+    .navbar-block {
+        height: 56px;
+        width: 900px;
+        position: absolute;
+        z-index: 105;
+    }
+
+    .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .light-items {
+        background-color: #25cf74;
+        border-radius: 4px;
+        opacity: 1;
+        transition: .8s;
+        width: 110px;
+        text-align: center;
+    }
+
+    .mini-photo {
+        width: 45px;
+        height: 45px;
+        border-radius: 3px;
+        position: absolute;
+        z-index: 105;
+        margin: 5px;
+    }
+
+    .carousel {
+        position: relative;
+        border: 1px solid #CCC;
+        border-radius: 15px;
+        background: #eee;
+        margin-left: -95px;
+        width: 495px;
+        padding: 10px 48px;
+    }
+
+    .carousel img {
+        width: 165px;
+        height: 240px;
+        display: block;
+    }
+
+    .arrow2 {
+        position: absolute;
+        top: 60px;
+        padding: 0;
+        background: #ddd;
+        border-radius: 15px;
+        border: 1px solid gray;
+        font-size: 24px;
+        line-height: 24px;
+        color: #444;
+        display: block;
+        width: 35px;
+    }
+
+    .arrow2:focus {
+        outline: none;
+    }
+
+    .arrow2:hover {
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    .prev {
+        left: 7px;
+    }
+
+    .next {
+        right: 7px;
+    }
+
+    .gallery {
+        width: 495px;
+        overflow: hidden;
+    }
+
+    .gallery ul {
+        height: 240px;
+        width: 9999px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        transition: margin-left 250ms;
+
+        font-size: 0;
+    }
+
+    .gallery li {
+        display: inline-block;
+    }
+</style>
+<header>
+    <div class="navbar-block">
+        <nav id="navbar">
+            <div class="navbar">
+                <ul class="navigation-item-list">
+                    <li class="main-item" id="main-item">Irina Telesheva</li>
+                    <li class="navigation-item" id="info">Personal Info</li>
+                    <li class="navigation-item" id="study">Education</li>
+                    <li class="navigation-item" id="work">Experience</li>
+                    <li class="navigation-item" id="sum">Summary</li>
+                    <li class="navigation-item my-dropdown">
+                        <a id="drop-link">
+                            Additional info
+                            <div id="triangle" class="triangle-down"></div>
+                        </a>
+                        <ul id="mydropdown" class="mydropdown-menu">
+                            <li class="drop-li"><a href="#">My Hobbies</a></li>
+                            <li class="drop-li"><a href="#">My Future Plans</a></li>
+                            <li class="drop-li"><a href="#">My Blog</a></li>
+                            <li class="drop-li"><a href="#">School</a></li>
+                            <li class="drop-li"><a href="#">Computer</a></li>
+                            <li class="drop-li"><a href="#">Artificial Intelligence</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section class="head">
+        <div id="fancyBox-overlay" class="unshow"></div>
+        <div id="fancy-wrapper" class="unshow">
+            <div id="fancy-outer">
+                <div id="fancy-content">
+                    <div class="arrow" id="arrow-left"><img src="images/arrow-left.png"></div>
+                    <div class="arrow" id="arrow-right"><img src="images/arrow-right.png"></div>
+                </div>
+                <a id="fancy-close" class="close"></a>
+                <div id="carousel" class="carousel">
+                    <button class="arrow2 prev">⇦</button>
+                    <div class="gallery">
+                        <ul class="images">
+                            <li><img src="file:///C:/Users/megoi/WebstormProjects/Laba3Web/images/me-small.jpg"
+                                     class="small-photo" id="photo1"></li>
+                            <li><img src="file:///C:/Users/megoi/WebstormProjects/Laba3Web/images/photo1-small.jpg"
+                                     class="small-photo" id="photo2"></li>
+                            <li><img src="file:///C:/Users/megoi/WebstormProjects/Laba3Web/images/photo2-small.jpg"
+                                     class="small-photo" id="photo3"></li>
+                            <li><img src="file:///C:/Users/megoi/WebstormProjects/Laba3Web/images/photo3-small.jpg"
+                                     class="small-photo" id="photo4"></li>
+                        </ul>
+                    </div>
+                    <button class="arrow2 next">⇨</button>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div id="my-photo">
+                <img class="big-photo img" src="images/me.jpg">
+            </div>
+            <div class="unshow">
+                <img src="images/photo1.jpg" class="big-photo">
+                <img src="images/photo2.jpg" class="big-photo">
+                <img src="images/photo3.jpg" class="big-photo">
+            </div>
+            <div class="text">
+                <p>Irina Telesheva
+                    Frontend Developer</p>
+                <div class="links">
+                    <img src="images/envelope.png" width="25px" height="25px"> <a href="#"> example@gmail.com</a>
+                    <img src="images/internet.png" width="25px" height="25px"> <a href="#"> http://mywebsite.com</a>
+                    <img src="images/smartphone.png" width="25px" height="25px"> <a href="#"> +380-55-745-98-81</a><br>
+                    <div class="social">
+                        <img src="images/facebook.png" width="30px" height="30px">
+                        <a href="https://www.instagram.com/telesheva15"><img src="images/instagram.png" width="30px"
+                                                                             height="30px"></a>
+                        <img src="images/skype.png" width="30px" height="30px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+<main>
+    <div class="wrap">
+        <section class="about">
+            <p>Hello! I'm Irina Telesheva, Junior Web Developer with experience in front end development.
+                Having an in-depth knowledge including HTML5, CSS, CSS3, SASS, JavaScript, Vue JS, Angular JS.</p>
+            <hr>
+            <div class="buttons">
+                <button class="btn">DOWNLOAD CV</button>
+                <button class="btn">CONTACT ME</button>
+            </div>
+        </section>
+        <section class="personal">
+            <hr>
+            <h2 class="light-item">Personal Data</h2>
+            <img id="personal_data" src="images/resume.png" width="50px" height="50px">
+        </section>
+        <section class="list">
+            <ul class="my-list">
+                <li class="my-list-item"><p>Name: <strong>Irina Telesheva</strong></p>
+                </li>
+                <li class="my-list-item"><p>Gender: Female</p></li>
+                <li class="my-list-item"><p>Date of Birth: July 20, 2000</p></li>
+                <li class="my-list-item"><p>Place of Birth: Kharkiv, Ukraine</p></li>
+                <li class="my-list-item"><p>Citizenship: Ukraine</p></li>
+                <li class="my-list-item"><p>Civil Status: Single</p></li>
+                <li class="my-list-item"><p>Address: Kharkov National
+                    University of Radioelectronics, 14 Lenina av., 61166 Kharkov, Ukraine
+                </p></li>
+                <li class="my-list-item"><p>Phone: +380(55)5473 738</p></li>
+                <li class="my-list-item"><p>Contacts: <a href="http://www.google.com">example11@gmail.com</a>
+                </p></li>
+            </ul>
+        </section>
+        <hr>
+        <section class="education">
+            <h2 class="light-item">Education</h2>
+            <img id="education" src="images/open-book.png" width="50px" height="50px">
+        </section>
+        <section>
+            <div class="nure">
+                <p>Kharkiv National University of Radioelectronics (Kharkiv, Ukraine)</p>
+            </div>
+        </section>
+        <hr>
+        <section class="experience">
+            <h2 class="light-item">Experience</h2>
+            <img id="experience" src="images/laptop.png" width="50px" height="50px">
+        </section>
+        <section>
+            <div class="it">
+                <p>Frontend Developer in Source IT Ukraine<br>
+                    September 2018 - I have finished the course "JavaScript(Frontend)"
+                    <img src="https://sourceit.com.ua/images/og/sourceit.png" class="sourceit">
+                </p>
+            </div>
+        </section>
+        <hr>
+        <section class="summary">
+            <h2 class="light-item">Summary</h2>
+            <img id="summary" src="images/thinking.png" width="50px" height="50px">
+        </section>
+        <section>
+            <div class="skills">
+                <ul class="skills-list">
+                    <li class="skills-item">- HTML5, CSS3, JavaScript, SCSS, JQuery</li>
+                    <li class="skills-item">- Knowledge of Node.js</li>
+                    <li class="skills-item">- Knowledge of OOP principles and their practical use</li>
+                    <li class="skills-item">- Knowledge of the JS frameworks: Vue.js, Angular 4</li>
+                </ul>
+            </div>
+        </section>
+        <hr>
+        <section class="tools">
+            <h2>Tools</h2>
+            <img id="tools" src="images/responsive.png" width="50px" height="50px">
+        </section>
+        <section>
+            <div class="program">
+                <label>
+                    <img src="images/webstorm-icon.png">Webstorm
+                    <img src="images/visual-studio.png">Visual Studio
+                    <img src="images/github.png">Git
+                </label>
+                <label>
+                    <img src="images/yarn.png">Yarn
+                    <img src="images/npm.png">NPM
+                    <img src="images/webpack.png">Webpack
+                </label>
+            </div>
+        </section>
+    </div>
+</main>
+<footer>
+    <div id="footer">
+        <div class="footer-content">
+            © Irina Telesheva
+        </div>
+        <div class="footer-text">
+            <p>Kharkiv National University of Radioelectronics
+                Department of Artificial Intelligence<br>
+                2018<br>
+                <img src="images/internet.png" width="25px" height="25px"><a href="http://nure.ua/">
+                    http://nure.ua</a><br>
+                <img src="images/envelope.png" width="25px" height="25px"> info@nure.ua</p>
+        </div>
+    </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
